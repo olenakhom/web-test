@@ -10,29 +10,69 @@
     <properties>
         <maven.compiler.plugin.verion>3.8.0</maven.compiler.plugin.verion>
         <allure.maven.version>2.10.0</allure.maven.version>
-        <allure.testng.version>2.13.2</allure.testng.version>
+        <!--<allure.testng.version>2.13.2</allure.testng.version>-->
         <testng.version>7.1.0</testng.version>
         <org.springframework.version>5.2.7.RELEASE</org.springframework.version>
-        <maven.surefire.plugin.version>2.20</maven.surefire.plugin.version>
+        <maven.surefire.plugin.version>3.0.0-M4</maven.surefire.plugin.version>
         <aspectj.version>1.9.5</aspectj.version>
-        <webdrivermanager.version>4.0.0</webdrivermanager.version>
-        <selenide.version>5.10.0</selenide.version>
+        <!--<webdrivermanager.version>4.0.0</webdrivermanager.version>-->
+        <!--<selenide.version>5.10.0</selenide.version>-->
+        <!--<selenide.version>5.2.8</selenide.version>-->
         <log4j.version>2.11.2</log4j.version>
+        <allure-junit5.version>2.13.3</allure-junit5.version>
+        <junit.jupiter.version>5.5.2</junit.jupiter.version>
+        <!--<testTags>smoke</testTags>-->
+        <run.tests.from.path>**/api/**/tests/**</run.tests.from.path>
+        <run.in.parallel>false</run.in.parallel>
+        <threadCount>20</threadCount>
+        <ashot.version>1.5.4</ashot.version>
+        <selenium.version>3.8.1</selenium.version>
+        <selenium-api.version>3.14.0</selenium-api.version>
+        <selenide.version>5.2.8</selenide.version>
+        <allure.results.directory>target/allure-results</allure.results.directory>
+        <test.resources.directory>src/test/resources</test.resources.directory>
+        <maven.resources.plugin.version>3.1.0</maven.resources.plugin.version>
+        <testTags>smoke</testTags>
     </properties>
 
     <dependencies>
-
-<!--        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-server</artifactId>
-            <version>2.49.0</version>
-        </dependency>-->
-
+        <!--Allure Dependency | For Reporting-->
         <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>${testng.version}</version>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-junit5</artifactId>
+            <version>${allure-junit5.version}</version>
         </dependency>
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-rest-assured</artifactId>
+            <version>${allure-junit5.version}</version>
+        </dependency>
+        <!--Junit Dependencies | For Test execution-->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>${junit.jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>${junit.jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit.jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <!--Log4J Dependency | For Logging-->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+
 
         <dependency>
             <groupId>org.hamcrest</groupId>
@@ -43,14 +83,27 @@
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>3.9.1</version>
+            <version>${selenium.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.codeborne</groupId>
+            <artifactId>selenide</artifactId>
+            <version>${selenide.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-api</artifactId>
+            <version>${selenium-api.version}</version>
+            <scope>test</scope>
         </dependency>
 
-        <dependency>
-            <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-testng</artifactId>
-            <version>${allure.testng.version}</version>
-        </dependency>
+<!--        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>3.9.1</version>
+        </dependency>-->
 
         <dependency>
             <groupId>org.springframework</groupId>
@@ -77,26 +130,57 @@
             <version>${log4j.version}</version>
         </dependency>
 
-<!--        <dependency>
-            <groupId>io.github.bonigarcia</groupId>
-            <artifactId>webdrivermanager</artifactId>
-            <version>${webdrivermanager.version}</version>
-        </dependency>-->
+        <!--        <dependency>
+                    <groupId>io.github.bonigarcia</groupId>
+                    <artifactId>webdrivermanager</artifactId>
+                    <version>${webdrivermanager.version}</version>
+                </dependency>-->
+
+        <!--        <dependency>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-simple</artifactId>
+                    <version>1.7.30</version>
+                    <scope>test</scope>
+                </dependency>-->
 
         <dependency>
-            <groupId>com.codeborne</groupId>
-            <artifactId>selenide</artifactId>
-            <version>${selenide.version}</version>
+            <groupId>ru.yandex.qatools.ashot</groupId>
+            <artifactId>ashot</artifactId>
+            <version>${ashot.version}</version>
+            <scope>compile</scope>
         </dependency>
 
 <!--        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-simple</artifactId>
-            <version>1.7.30</version>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>6.14.3</version>
             <scope>test</scope>
         </dependency>-->
 
     </dependencies>
+
+    <profiles>
+        <profile>
+            <id>ui</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <run.tests.from.path>**/ui/**/tests/**</run.tests.from.path>
+                <run.in.parallel>true</run.in.parallel>
+            </properties>
+        </profile>
+        <profile>
+            <id>api</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <run.tests.from.path>**/api/**/tests/**</run.tests.from.path>
+                <run.in.parallel>false</run.in.parallel>
+            </properties>
+        </profile>
+    </profiles>
 
     <build>
         <plugins>
@@ -108,17 +192,67 @@
                     <release>11</release>
                 </configuration>
             </plugin>
+            <!--
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-checkstyle-plugin</artifactId>
+                        <version>${maven.checkstyle.plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>validate</id>
+                                <phase>validate</phase>
+                                <configuration>
+                                    <configLocation>code-quality/checkstyle.xml</configLocation>
+                                    <encoding>UTF-8</encoding>
+                                    <consoleOutput>true</consoleOutput>
+                                    <violationSeverity>error</violationSeverity>
+                                    <failsOnError>true</failsOnError>
+                                    <includeTestSourceDirectory>true</includeTestSourceDirectory>
+                                    <includeResources>false</includeResources>
+                                    <includeTestResources>false</includeTestResources>
+                                </configuration>
+                                <goals>
+                                    <goal>check</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <dependencies>
+                            <dependency>
+                                <groupId>com.puppycrawl.tools</groupId>
+                                <artifactId>checkstyle</artifactId>
+                                <version>${com.puppycrawl.tools.version}</version>
+                            </dependency>
+                        </dependencies>
+                    </plugin>
+            -->
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven.surefire.plugin.version}</version>
                 <configuration>
-                    <suiteXmlFiles>
-                        <suiteXmlFile>testng.xml</suiteXmlFile>
-                    </suiteXmlFiles>
+                    <groups>${testTags}</groups>
+                    <includes>
+                        <include>${run.tests.from.path}</include>
+                    </includes>
+                    <properties>
+                        <configurationParameters>
+                            junit.jupiter.execution.parallel.enabled = ${run.in.parallel}
+                            junit.jupiter.execution.parallel.mode.default = concurrent
+                            junit.jupiter.execution.parallel.mode.classes.default = concurrent
+
+                            junit.jupiter.execution.parallel.config.strategy = fixed
+                            junit.jupiter.execution.parallel.config.fixed.parallelism=${threadCount}
+                        </configurationParameters>
+                    </properties>
+                    <testFailureIgnore>false</testFailureIgnore>
                     <argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     </argLine>
+                    <systemProperties>
+                        <property>
+                            <name>junit.jupiter.extensions.autodetection.enabled</name>
+                            <value>true</value>
+                        </property>
+                    </systemProperties>
                 </configuration>
                 <dependencies>
                     <dependency>
@@ -128,18 +262,53 @@
                     </dependency>
                 </dependencies>
             </plugin>
-        </plugins>
-    </build>
 
-    <reporting>
-        <excludeDefaults>true</excludeDefaults>
-        <plugins>
             <plugin>
                 <groupId>io.qameta.allure</groupId>
                 <artifactId>allure-maven</artifactId>
-                <version>${allure.maven.version}</version>
+                <version>2.10.0</version>
+                <configuration>
+                    <reportVersion>2.10.0</reportVersion>
+                </configuration>
             </plugin>
+
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>${maven.resources.plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>copy-resources</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${allure.results.directory}</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${test.resources.directory}</directory>
+                                    <includes>
+                                        <include>categories.json</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
         </plugins>
-    </reporting>
+    </build>
+
+    <!--    <reporting>
+            <excludeDefaults>true</excludeDefaults>
+            <plugins>
+                <plugin>
+                    <groupId>io.qameta.allure</groupId>
+                    <artifactId>allure-maven</artifactId>
+                    <version>${allure.maven.version}</version>
+                </plugin>
+            </plugins>
+        </reporting>-->
 
 </project>
