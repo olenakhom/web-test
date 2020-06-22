@@ -71,6 +71,12 @@ public final class WebDriverManager {
             Configuration.browser = Browsers.SAFARI;
             return;
         }
+
+        if (currentBrowser != null && currentBrowser.equalsIgnoreCase(Browsers.FIREFOX)) {
+            Configuration.browser = Browsers.FIREFOX;
+            return;
+        }
+
         Configuration.browser = Browsers.CHROME;
     }
 
