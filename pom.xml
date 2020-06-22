@@ -10,25 +10,28 @@
     <properties>
         <maven.compiler.plugin.verion>3.8.0</maven.compiler.plugin.verion>
         <allure.maven.version>2.10.0</allure.maven.version>
-        <allure.testng.version>2.13.3</allure.testng.version>
+        <allure.testng.version>2.13.2</allure.testng.version>
+        <testng.version>7.1.0</testng.version>
         <org.springframework.version>5.2.7.RELEASE</org.springframework.version>
         <maven.surefire.plugin.version>2.20</maven.surefire.plugin.version>
         <aspectj.version>1.9.5</aspectj.version>
         <webdrivermanager.version>4.0.0</webdrivermanager.version>
+        <selenide.version>5.10.0</selenide.version>
+        <log4j.version>2.11.2</log4j.version>
     </properties>
 
     <dependencies>
 
-        <dependency>
+<!--        <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-server</artifactId>
             <version>2.49.0</version>
-        </dependency>
+        </dependency>-->
 
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>6.8.21</version>
+            <version>${testng.version}</version>
         </dependency>
 
         <dependency>
@@ -41,13 +44,6 @@
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>3.9.1</version>
-        </dependency>
-
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-            <scope>test</scope>
         </dependency>
 
         <dependency>
@@ -74,11 +70,31 @@
             <version>1.18.12</version>
         </dependency>
 
+        <!--Log4J Dependency | For Logging-->
         <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+
+<!--        <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
             <version>${webdrivermanager.version}</version>
+        </dependency>-->
+
+        <dependency>
+            <groupId>com.codeborne</groupId>
+            <artifactId>selenide</artifactId>
+            <version>${selenide.version}</version>
         </dependency>
+
+<!--        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.30</version>
+            <scope>test</scope>
+        </dependency>-->
 
     </dependencies>
 
