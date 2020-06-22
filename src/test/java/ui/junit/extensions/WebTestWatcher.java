@@ -9,8 +9,8 @@ import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.extension.TestWatcher;
 import org.openqa.selenium.WebDriver;
 import ui.webdriver.WebDriverManager;
-import static utils.AttachmentReportUtils.attachFullPageScreenshot;
-import static utils.AttachmentReportUtils.attachText;
+import static common.utils.AttachmentReportUtil.attachFullPageScreenshot;
+import static common.utils.AttachmentReportUtil.attachText;
 
 public class WebTestWatcher implements TestWatcher {
     private static final Logger LOGGER = LogManager.getLogger(WebTestWatcher.class);

@@ -1,4 +1,4 @@
-package model;
+package common.model;
 
 import java.util.Arrays;
 import lombok.AccessLevel;
@@ -7,17 +7,11 @@ import lombok.Getter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-/**
- * Test environment enum
- *
- * @author KuK QA
- */
 @Getter
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public enum TestEnvironment {
 
-    INT("int"), QA("qa"), LOCAL("local"), STAGING("staging"), PRODUCTION("prod"), INT_DELTA("int_delta"),
-    INT_EPSILON("int_epsilon"), INT_ALPHA("int_alpha");
+    INT("int"), QA("qa"), LOCAL("local"), STAGING("staging"), PRODUCTION("prod");
 
     private String env;
 

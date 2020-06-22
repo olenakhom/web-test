@@ -4,7 +4,6 @@ import io.qameta.allure.Step;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class LoginPage extends BasePage{
 
@@ -19,29 +18,25 @@ public class LoginPage extends BasePage{
 
     @Step("Home Page : Fill email {email} to create account")
     public void fillEmailCreate(String email) {
-        getWait().until(ExpectedConditions.elementToBeClickable(emailCreateInput))
-            .sendKeys(email);
+        waitForClickableAndFill(emailCreateInput, email);
     }
 
     @Step("Home Page : Click on submit create button")
     public RegistrationPage clickSubmitCreateButton() {
-        getWait().until(ExpectedConditions.elementToBeClickable(submitCreateButton))
-            .click();
+        waitForClickableAndClick(submitCreateButton);
         return new RegistrationPage();
     }
 
     @Step("Home Page : Click on submit login button")
     public AccountPage clickSubmitLoginButton() {
-        getWait().until(ExpectedConditions.elementToBeClickable(submitLoginButton))
-            .click();
+        waitForClickableAndClick(submitLoginButton);
         return new AccountPage();
     }
 
     @Step("Home Page : Fill in login form")
     public void fillFormToLogin(String email, String password){
-        getWait().until(ExpectedConditions.elementToBeClickable(emailInput))
-            .sendKeys(email);
-        getDriver().findElement(passwordInput).sendKeys(password);
+        waitForClickableAndFill(emailInput, email);
+        waitForClickableAndFill(passwordInput, password);
     }
 
 }

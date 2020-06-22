@@ -8,7 +8,7 @@ import org.junit.jupiter.api.extension.BeforeAllCallback;
 import org.junit.jupiter.api.extension.BeforeEachCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import ui.webdriver.WebDriverManager;
-import static utils.PropertiesUtils.loadWebdriverProperties;
+import static common.utils.PropertiesUtil.loadWebdriverProperties;
 
 public class WebTestContext implements BeforeEachCallback, AfterEachCallback, BeforeAllCallback {
 

@@ -2,14 +2,14 @@ package ui.junit.extensions.custom;
 
 
 import lombok.Synchronized;
-import model.TestEnvironment;
+import common.model.TestEnvironment;
 
 import org.junit.jupiter.api.extension.ExtensionContext;
 import ui.junit.extensions.WebTestContext;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import static utils.PropertiesUtils.loadAllProperties;
+import static common.utils.PropertiesUtil.loadAllProperties;
 
 public class CustomTestContext extends WebTestContext {
 

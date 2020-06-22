@@ -1,4 +1,4 @@
-package utils;
+package common.utils;
 
 import com.google.common.io.ByteStreams;
 import io.qameta.allure.Attachment;
@@ -17,19 +17,13 @@ import ru.yandex.qatools.ashot.AShot;
 import ru.yandex.qatools.ashot.Screenshot;
 import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
 
-/**
- * @author KuK QA
- */
-public final class AttachmentReportUtils {
+public final class AttachmentReportUtil {
 
-    private static final Logger LOGGER = LogManager.getLogger(AttachmentReportUtils.class);
+    private static final Logger LOGGER = LogManager.getLogger(AttachmentReportUtil.class);
 
-    private AttachmentReportUtils() {
+    private AttachmentReportUtil() {
     }
 
-    /**
-     * takes a screenshot of the whole page and saves it to user directory
-     */
     @Attachment(value = "Page screenshot", type = "image/png")
     public static byte[] attachFullPageScreenshot(final WebDriver driver, String screenshotName) {
         try {
@@ -40,9 +34,6 @@ public final class AttachmentReportUtils {
         return new byte[0];
     }
 
-    /**
-     * Attach text to allure report
-     */
     @Attachment(value = "{attachmentTitle}")
     public static String attachText(String text, String attachmentTitle) {
         return text;

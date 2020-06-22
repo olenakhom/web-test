@@ -10,7 +10,7 @@ import ui.model.AccountPersonalInfo;
 import ui.model.Address;
 import ui.model.Gender;
 
-public class RegistrationPage extends BasePage{
+public class RegistrationPage extends BasePage {
 
     private static final Logger LOGGER = LogManager.getLogger(RegistrationPage.class);
 
@@ -36,40 +36,35 @@ public class RegistrationPage extends BasePage{
     @Step("Registration Page : Fill form")
     public void fillForm(AccountPersonalInfo personalInfo) {
         selectGender(personalInfo.getGender());
-        getDriver().findElement(firstNameInput).sendKeys(personalInfo.getFirstName());
-        getDriver().findElement(lastNameInput).sendKeys(personalInfo.getLastName());
-        getDriver().findElement(passwordInput).sendKeys(personalInfo.getPassword());
-        Select select = new Select(getDriver().findElement(dayOfBirthSelect));
-        select.selectByValue(String.valueOf(personalInfo.getDateOfBirth().getDay()));
-        select = new Select(getDriver().findElement(monthOfBirthSelect));
-        select.selectByValue(String.valueOf(personalInfo.getDateOfBirth().getMonth()));
-        select = new Select(getDriver().findElement(yearOfBirthSelect));
-        select.selectByValue(String.valueOf(personalInfo.getDateOfBirth().getYear()));
-        getDriver().findElement(companyInput).sendKeys(personalInfo.getCompany());
+        waitForClickableAndFill(firstNameInput, personalInfo.getFirstName());
+        waitForClickableAndFill(lastNameInput, personalInfo.getLastName());
+        waitForClickableAndFill(passwordInput, personalInfo.getPassword());
+        selectByValue(dayOfBirthSelect, String.valueOf(personalInfo.getDateOfBirth().getDay()));
+        selectByValue(monthOfBirthSelect, String.valueOf(personalInfo.getDateOfBirth().getMonth()));
+        selectByValue(yearOfBirthSelect, String.valueOf(personalInfo.getDateOfBirth().getYear()));
+        waitForClickableAndFill(companyInput, personalInfo.getCompany());
         Address address = personalInfo.getAddress();
-        getDriver().findElement(address1Input).sendKeys(address.getAddress1());
-        getDriver().findElement(address2Input).sendKeys(address.getAddress2());
-        getDriver().findElement(cityInput).sendKeys(address.getCity());
-        select = new Select(getDriver().findElement(stateSelect));
-        select.selectByVisibleText(address.getState());
-        getDriver().findElement(postcodeInput).sendKeys(address.getZipOrPostalCode());
-        getDriver().findElement(additionalInfoInput).sendKeys(personalInfo.getAdditionalInfo());
-        getDriver().findElement(phoneInput).sendKeys(personalInfo.getPhoneNumber());
-        getDriver().findElement(mobilePhoneInput).sendKeys(personalInfo.getPhoneNumber());
-        getDriver().findElement(addressAliasInput).sendKeys(address.getAddressAlias());
-
+        waitForClickableAndFill(address1Input, address.getAddress1());
+        waitForClickableAndFill(address2Input, address.getAddress2());
+        waitForClickableAndFill(cityInput, address.getCity());
+        selectByText(stateSelect, address.getState());
+        waitForClickableAndFill(postcodeInput, address.getZipOrPostalCode());
+        waitForClickableAndFill(additionalInfoInput, personalInfo.getAdditionalInfo());
+        waitForClickableAndFill(phoneInput, personalInfo.getPhoneNumber());
+        waitForClickableAndFill(mobilePhoneInput, personalInfo.getPhoneNumber());
+        waitForClickableAndFill(addressAliasInput, address.getAddressAlias());
     }
 
     @Step("Registration Page : Click on submit button")
     public AccountPage clickSubmitButton(){
-        getDriver().findElement(submitFormButton).click();
+        waitForClickableAndClick(submitFormButton);
         return new AccountPage();
     }
 
     @Step("Registration Page : Select gender {gender}")
     public void selectGender(Gender gender) {
         if (gender.equals(Gender.MS)) {
-            getWait().until(ExpectedConditions.visibilityOfElementLocated(genderMsRadioButton)).click();
+            waitForClickableAndClick(genderMsRadioButton);
         }
     }
 

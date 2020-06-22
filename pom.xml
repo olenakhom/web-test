@@ -21,10 +21,9 @@
         <log4j.version>2.11.2</log4j.version>
         <allure-junit5.version>2.13.3</allure-junit5.version>
         <junit.jupiter.version>5.5.2</junit.jupiter.version>
-        <!--<testTags>smoke</testTags>-->
         <run.tests.from.path>**/api/**/tests/**</run.tests.from.path>
         <run.in.parallel>false</run.in.parallel>
-        <threadCount>20</threadCount>
+        <threadCount>3</threadCount>
         <ashot.version>1.5.4</ashot.version>
         <selenium.version>3.8.1</selenium.version>
         <selenium-api.version>3.14.0</selenium-api.version>
@@ -32,7 +31,7 @@
         <allure.results.directory>target/allure-results</allure.results.directory>
         <test.resources.directory>src/test/resources</test.resources.directory>
         <maven.resources.plugin.version>3.1.0</maven.resources.plugin.version>
-        <testTags>smoke</testTags>
+        <testTags>regression</testTags>
         <assertj-core.version>3.14.0</assertj-core.version>
     </properties>
 

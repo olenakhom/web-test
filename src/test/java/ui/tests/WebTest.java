@@ -1,17 +1,15 @@
 package ui.tests;
 
+import java.util.List;
+import ui.model.ProductDetails;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
-import java.util.Date;
-
 import ui.junit.extensions.custom.CustomTestContext;
 import ui.junit.extensions.custom.CustomTestWatcher;
 import ui.model.AccountPersonalInfo;
-import ui.model.Address;
-import ui.model.Gender;
 import ui.pages.AccountPage;
 import ui.pages.CategoryPage;
 import ui.pages.HomePage;
@@ -20,20 +18,22 @@ import ui.pages.OrderConfirmationPage;
 import ui.pages.OrderPage;
 import ui.pages.ProductDetailsPage;
 import ui.pages.RegistrationPage;
+import ui.testdata.AccountInfo;
+import common.utils.JsonUtil;
 
 @ExtendWith({CustomTestContext.class, CustomTestWatcher.class})
 public class WebTest {
 
     @Test
-    @Tags({@Tag("smoke")})
+    @Tags({@Tag("regression")})
     public void signInTest() {
-        AccountPersonalInfo personalInfo = generatePersonalInfoForNewAccount();
+        AccountPersonalInfo personalInfo = AccountInfo.generateForNewAccount();
 
         HomePage homePage = new HomePage();
         homePage.openPage();
         LoginPage loginPage = homePage.clickLoginButton();
 
-        loginPage.fillEmailCreate(generateEmail());
+        loginPage.fillEmailCreate(AccountInfo.generateNewEmail());
         RegistrationPage registrationPage = loginPage.clickSubmitCreateButton();
 
         registrationPage.fillForm(personalInfo);
@@ -43,9 +43,9 @@ public class WebTest {
     }
 
     @Test
-    @Tags({@Tag("smoke")})
+    @Tags({@Tag("regression")})
     public void logInTest() {
-        AccountPersonalInfo personalInfo = generatePersonalInfoForExistingUser();
+        AccountPersonalInfo personalInfo = AccountInfo.generateForExistingUser();
 
         HomePage homePage = new HomePage();
         homePage.openPage();
@@ -58,9 +58,10 @@ public class WebTest {
     }
 
     @Test
-    @Tags({@Tag("smoke")})
+    @Tags({@Tag("regression")})
     public void checkoutTest() {
-        AccountPersonalInfo personalInfo = generatePersonalInfoForExistingUser();
+        AccountPersonalInfo personalInfo = AccountInfo.generateForExistingUser();
+        List<ProductDetails> productDetails = JsonUtil.readFromProductDetailsJson();
 
         HomePage homePage = new HomePage();
         homePage.openPage();
@@ -70,7 +71,7 @@ public class WebTest {
         AccountPage accountPage = loginPage.clickSubmitLoginButton();
 
         CategoryPage categoryPage = accountPage.clickWomenLink();
-        ProductDetailsPage productPage = categoryPage.clickProductLink();
+        ProductDetailsPage productPage = categoryPage.clickProductLink(productDetails.get(0).getTitle());
 
         productPage.switchToPopup();
         productPage.clickSubmitButton();
@@ -84,43 +85,6 @@ public class WebTest {
         OrderConfirmationPage orderConfirmationPage = orderPage.clickSubmitOrderButton();
 
         orderConfirmationPage.verify();
-    }
-
-    private AccountPersonalInfo generatePersonalInfoForNewAccount() {
-        AccountPersonalInfo personalInfo = new AccountPersonalInfo();
-        personalInfo.setGender(Gender.MS);
-        personalInfo.setFirstName("Firstname");
-        personalInfo.setLastName("Lastname");
-        personalInfo.setPassword("Qwerty");
-        personalInfo.setDateOfBirth(new Date(2000, 1, 1));
-        personalInfo.setCompany("Company");
-        personalInfo.setAddress(Address.builder()
-            .address1("Qwerty, 123")
-            .address2("zxcvb")
-            .city("Qwerty")
-            .state("Colorado")
-            .zipOrPostalCode("12345")
-            .addressAlias("gk")
-            .build());
-        personalInfo.setAdditionalInfo("Qwerty");
-        personalInfo.setPhoneNumber("12345123123");
-        personalInfo.setMobilePhone("12345123123");
-        return personalInfo;
-    }
-
-    private String generateEmail() {
-        String timestamp = String.valueOf(new Date().getTime());
-        String email = "gk_" + timestamp + "@gk" + timestamp.substring(7) + ".com";
-        return email;
-    }
-
-    private AccountPersonalInfo generatePersonalInfoForExistingUser() {
-        AccountPersonalInfo personalInfo = new AccountPersonalInfo();
-        personalInfo.setEmail("gk123@gk.com");
-        personalInfo.setPassword("123456");
-        personalInfo.setFirstName("Ankit");
-        personalInfo.setLastName("Nigam");
-        return personalInfo;
     }
 
 }
