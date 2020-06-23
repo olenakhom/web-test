@@ -1,5 +1,7 @@
 package ui.src.junit.extensions;
 
+import static common.utils.PropertiesUtil.loadWebdriverProperties;
+
 import lombok.Synchronized;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -8,7 +10,6 @@ import org.junit.jupiter.api.extension.BeforeAllCallback;
 import org.junit.jupiter.api.extension.BeforeEachCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import ui.src.webdriver.WebDriverManager;
-import static common.utils.PropertiesUtil.loadWebdriverProperties;
 
 public class WebTestContext implements BeforeEachCallback, AfterEachCallback, BeforeAllCallback {
 

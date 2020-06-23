@@ -1,6 +1,7 @@
 package ui.src.pages;
 
 import static com.codeborne.selenide.Selenide.open;
+
 import io.qameta.allure.Step;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

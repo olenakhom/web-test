@@ -9,8 +9,11 @@ public class ProductDetailsPage extends BasePage {
     private By proceedToCheckoutButton = By.xpath("//*[@id='layer_cart']//a[@class and @title='Proceed to checkout']");
     private By iframe = By.className("fancybox-iframe");
 
-    @Step("Product Details Page : Switch to popup")
+    @Step("Product Details Page : Switch to popup if frame is displayed")
     public void switchToPopup() {
+        if (isDisplayed(iframe) == Boolean.FALSE) {
+            return;
+        }
         waitForVisibility(iframe);
         waitForAvailableAndSwitchToFrame(iframe);
     }

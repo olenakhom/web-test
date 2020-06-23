@@ -33,24 +33,25 @@ public class RegistrationPage extends BasePage {
 
     @Step("Registration Page : Fill form")
     public void fillForm(AccountPersonalInfo personalInfo) {
+        LOGGER.info("Fill Registration form with account data {}", personalInfo);
         selectGender(personalInfo.getGender());
-        waitForClickableAndFill(firstNameInput, personalInfo.getFirstName());
-        waitForClickableAndFill(lastNameInput, personalInfo.getLastName());
-        waitForClickableAndFill(passwordInput, personalInfo.getPassword());
+        fillInput(firstNameInput, personalInfo.getFirstName());
+        fillInput(lastNameInput, personalInfo.getLastName());
+        fillInput(passwordInput, personalInfo.getPassword());
         selectByValue(dayOfBirthSelect, String.valueOf(personalInfo.getDateOfBirth().getDay()));
         selectByValue(monthOfBirthSelect, String.valueOf(personalInfo.getDateOfBirth().getMonth()));
         selectByValue(yearOfBirthSelect, String.valueOf(personalInfo.getDateOfBirth().getYear()));
-        waitForClickableAndFill(companyInput, personalInfo.getCompany());
+        fillInput(companyInput, personalInfo.getCompany());
         Address address = personalInfo.getAddress();
-        waitForClickableAndFill(address1Input, address.getAddress1());
-        waitForClickableAndFill(address2Input, address.getAddress2());
-        waitForClickableAndFill(cityInput, address.getCity());
+        fillInput(address1Input, address.getAddress1());
+        fillInput(address2Input, address.getAddress2());
+        fillInput(cityInput, address.getCity());
         selectByText(stateSelect, address.getState());
-        waitForClickableAndFill(postcodeInput, address.getZipOrPostalCode());
-        waitForClickableAndFill(additionalInfoInput, personalInfo.getAdditionalInfo());
-        waitForClickableAndFill(phoneInput, personalInfo.getPhoneNumber());
-        waitForClickableAndFill(mobilePhoneInput, personalInfo.getPhoneNumber());
-        waitForClickableAndFill(addressAliasInput, address.getAddressAlias());
+        fillInput(postcodeInput, address.getZipOrPostalCode());
+        fillInput(additionalInfoInput, personalInfo.getAdditionalInfo());
+        fillInput(phoneInput, personalInfo.getPhoneNumber());
+        fillInput(mobilePhoneInput, personalInfo.getMobilePhone());
+        fillInput(addressAliasInput, address.getAddressAlias());
     }
 
     @Step("Registration Page : Click on submit button")

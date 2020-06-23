@@ -1,5 +1,5 @@
 #!/bin/sh
-# Navigate to qa-test-framework directory to run script
+# Navigate to root project directory to run script
 OS="`uname`"
 echo "Starting Selenium Hub..."
 sleep 2

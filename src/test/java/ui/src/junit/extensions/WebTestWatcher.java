@@ -1,7 +1,8 @@
 package ui.src.junit.extensions;
 
-import java.lang.reflect.Method;
-import java.util.Optional;
+import static common.utils.AttachmentReportUtil.attachFullPageScreenshot;
+import static common.utils.AttachmentReportUtil.attachText;
+
 import lombok.Synchronized;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -9,8 +10,9 @@ import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.extension.TestWatcher;
 import org.openqa.selenium.WebDriver;
 import ui.src.webdriver.WebDriverManager;
-import static common.utils.AttachmentReportUtil.attachFullPageScreenshot;
-import static common.utils.AttachmentReportUtil.attachText;
+
+import java.lang.reflect.Method;
+import java.util.Optional;
 
 public class WebTestWatcher implements TestWatcher {
     private static final Logger LOGGER = LogManager.getLogger(WebTestWatcher.class);

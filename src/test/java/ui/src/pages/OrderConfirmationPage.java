@@ -1,7 +1,8 @@
 package ui.src.pages;
 
-import io.qameta.allure.Step;
 import static org.assertj.core.api.Assertions.assertThat;
+
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 public class OrderConfirmationPage extends BasePage {

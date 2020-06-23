@@ -18,8 +18,8 @@ final class CreateEmployeeTest {
     @Tags({@Tag(REGRESSION), @Tag("employee")})
     void createEmployeeHasValidResponseTest() {
         Employee expectedEmployee = JsonUtil.readFromEmployeeJson("createemployee.json");
-
         EmployeeStep step = new EmployeeStep();
+
         EmployeeResponse actualResponse = step.createEmployee(expectedEmployee);
 
         step.verifyStatus(actualResponse.getStatus());

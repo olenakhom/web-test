@@ -19,7 +19,7 @@ public class CustomApiTestContext implements BeforeEachCallback, AfterEachCallba
     @Synchronized
     private static void beforeTestSuite() {
         LOGGER.info("beforeTestSuite: Test suite started");
-        loadAllProperties("kuk", TestEnvironment.PRODUCTION);
+        loadAllProperties("gfk", TestEnvironment.PRODUCTION);
     }
 
     @Synchronized
@@ -80,6 +80,5 @@ public class CustomApiTestContext implements BeforeEachCallback, AfterEachCallba
         }
     }
 
-    // </editor-fold>
 }
 

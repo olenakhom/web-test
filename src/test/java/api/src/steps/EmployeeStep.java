@@ -95,7 +95,6 @@ public class EmployeeStep {
         }
         assertThat(actualId).as("Id shouldn't be null")
             .isNotNull();
-        ;
     }
 
 }

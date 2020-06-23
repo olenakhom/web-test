@@ -10,14 +10,8 @@
     <properties>
         <maven.compiler.plugin.verion>3.8.0</maven.compiler.plugin.verion>
         <allure.maven.version>2.10.0</allure.maven.version>
-        <!--<allure.testng.version>2.13.2</allure.testng.version>-->
-        <testng.version>7.1.0</testng.version>
-        <org.springframework.version>5.2.7.RELEASE</org.springframework.version>
         <maven.surefire.plugin.version>3.0.0-M4</maven.surefire.plugin.version>
         <aspectj.version>1.9.5</aspectj.version>
-        <!--<webdrivermanager.version>4.0.0</webdrivermanager.version>-->
-        <!--<selenide.version>5.10.0</selenide.version>-->
-        <!--<selenide.version>5.2.8</selenide.version>-->
         <log4j.version>2.11.2</log4j.version>
         <allure-junit5.version>2.13.3</allure-junit5.version>
         <junit.jupiter.version>5.5.2</junit.jupiter.version>
@@ -66,12 +60,6 @@
             <version>${junit.jupiter.version}</version>
             <scope>test</scope>
         </dependency>
-        <!--Log4J Dependency | For Logging-->
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-            <version>${log4j.version}</version>
-        </dependency>
 
         <dependency>
             <groupId>org.assertj</groupId>
@@ -105,24 +93,6 @@
             <scope>test</scope>
         </dependency>
 
-<!--        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-java</artifactId>
-            <version>3.9.1</version>
-        </dependency>-->
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>${org.springframework.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <version>${org.springframework.version}</version>
-        </dependency>
-
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -136,32 +106,12 @@
             <version>${log4j.version}</version>
         </dependency>
 
-        <!--        <dependency>
-                    <groupId>io.github.bonigarcia</groupId>
-                    <artifactId>webdrivermanager</artifactId>
-                    <version>${webdrivermanager.version}</version>
-                </dependency>-->
-
-        <!--        <dependency>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-simple</artifactId>
-                    <version>1.7.30</version>
-                    <scope>test</scope>
-                </dependency>-->
-
         <dependency>
             <groupId>ru.yandex.qatools.ashot</groupId>
             <artifactId>ashot</artifactId>
             <version>${ashot.version}</version>
             <scope>compile</scope>
         </dependency>
-
-<!--        <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>6.14.3</version>
-            <scope>test</scope>
-        </dependency>-->
 
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -204,39 +154,6 @@
                     <release>11</release>
                 </configuration>
             </plugin>
-            <!--
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-checkstyle-plugin</artifactId>
-                        <version>${maven.checkstyle.plugin.version}</version>
-                        <executions>
-                            <execution>
-                                <id>validate</id>
-                                <phase>validate</phase>
-                                <configuration>
-                                    <configLocation>code-quality/checkstyle.xml</configLocation>
-                                    <encoding>UTF-8</encoding>
-                                    <consoleOutput>true</consoleOutput>
-                                    <violationSeverity>error</violationSeverity>
-                                    <failsOnError>true</failsOnError>
-                                    <includeTestSourceDirectory>true</includeTestSourceDirectory>
-                                    <includeResources>false</includeResources>
-                                    <includeTestResources>false</includeTestResources>
-                                </configuration>
-                                <goals>
-                                    <goal>check</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                        <dependencies>
-                            <dependency>
-                                <groupId>com.puppycrawl.tools</groupId>
-                                <artifactId>checkstyle</artifactId>
-                                <version>${com.puppycrawl.tools.version}</version>
-                            </dependency>
-                        </dependencies>
-                    </plugin>
-            -->
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven.surefire.plugin.version}</version>
@@ -308,19 +225,7 @@
                     </execution>
                 </executions>
             </plugin>
-
         </plugins>
     </build>
-
-    <!--    <reporting>
-            <excludeDefaults>true</excludeDefaults>
-            <plugins>
-                <plugin>
-                    <groupId>io.qameta.allure</groupId>
-                    <artifactId>allure-maven</artifactId>
-                    <version>${allure.maven.version}</version>
-                </plugin>
-            </plugins>
-        </reporting>-->
 
 </project>

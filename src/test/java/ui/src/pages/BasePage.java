@@ -7,6 +7,7 @@ import io.qameta.allure.Step;
 import lombok.AccessLevel;
 import lombok.Getter;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -31,14 +32,20 @@ public abstract class BasePage {
     }
 
     @Step("Wait until clickable and fill input by element {by}")
-    protected void waitForClickableAndFill(By by, String text) {
-        getWait().until(ExpectedConditions.elementToBeClickable(by))
-            .sendKeys(text);
+    protected void fillInput(By by, String text) {
+        findElement(by).sendKeys(text);
     }
 
     @Step("Wait until frame available and switch to frame {by}")
     protected void waitForAvailableAndSwitchToFrame(By frame) {
         getWait().until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(frame));;
+    }
+
+    @Step("Wait until visible element {by} and click with JS")
+    protected void waitForVisibilityAndClickWithJs(By by) {
+        waitForVisibility(by);
+        JavascriptExecutor executor = (JavascriptExecutor)getDriver();
+        executor.executeScript("arguments[0].click();", findElement(by));
     }
 
     @Step("Wait until visible element {by}")

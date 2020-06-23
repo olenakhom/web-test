@@ -1,16 +1,17 @@
 package ui.src.webdriver;
 
-import com.codeborne.selenide.Browsers;
-import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.WebDriverRunner;
-import common.model.TestEnvironment;
-import common.model.TestPlatform;
 import static common.model.TestPlatform.LINUX;
 import static common.model.TestPlatform.LOCAL;
 import static common.model.TestPlatform.MAC;
 import static common.model.TestPlatform.SELENOID;
 import static common.model.TestPlatform.WINDOWS;
 import static common.model.TestPlatform.getBySystemProperty;
+
+import com.codeborne.selenide.Browsers;
+import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.WebDriverRunner;
+import common.model.TestEnvironment;
+import common.model.TestPlatform;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.Platform;
@@ -26,7 +27,7 @@ public final class WebDriverManager {
     }
 
     public static void init() {
-        LOGGER.info("init: init web driver");
+        LOGGER.info("WebDriverManager: init web driver");
         Configuration.timeout = 8000;
         Configuration.pollingInterval = 1000;
         Configuration.screenshots = false;
@@ -43,19 +44,19 @@ public final class WebDriverManager {
 
     public static WebDriver getWebDriver() {
         WebDriver driver = WebDriverRunner.getAndCheckWebDriver();
-        LOGGER.info("getWebDriver: get and check web driver {}", driver);
+        LOGGER.info("WebDriverManager: get and check web driver {}", driver);
         return driver;
     }
 
     public static void deleteAllCookies() {
-        LOGGER.info("deleteAllCookies: Delete all browser cookies");
+        LOGGER.info("WebDriverManager: Delete all browser cookies");
         if (WebDriverRunner.hasWebDriverStarted()) {
             WebDriverRunner.clearBrowserCache();
         }
     }
 
     public static void closeWebDriver() {
-        LOGGER.info("closeWebDriver: Close web driver");
+        LOGGER.info("WebDriverManager: Close web driver");
         if (WebDriverRunner.hasWebDriverStarted()) {
             WebDriverRunner.closeWebDriver();
         }
@@ -91,13 +92,14 @@ public final class WebDriverManager {
     }
 
     private static void setRemoteConfigs(DesiredCapabilities capabilities) {
-        LOGGER.info("setRemoteConfigs: set web driver remote configurations");
+        LOGGER.info("WebDriverManager: set web driver remote configurations");
         String platform = System.getProperty("platform");
         String env = System.getProperty("env");
         String remoteSeleniumHub = System.getProperty("nodeURL");
+        String localSeleniumHub = System.getProperty("nodeURL_LOCAL");
 
         if (platform == null || platform.isEmpty()) {
-            Configuration.remote = remoteSeleniumHub;
+            Configuration.remote = localSeleniumHub;
             return;
         }
 
@@ -110,7 +112,7 @@ public final class WebDriverManager {
             return;
         }
         if (isEnvironmentLocal || currentPlatform.equals(LOCAL)) {
-            Configuration.remote = System.getProperty("nodeURL_LOCAL");
+            Configuration.remote = localSeleniumHub;
             return;
         }
         if (currentPlatform.equals(MAC)) {

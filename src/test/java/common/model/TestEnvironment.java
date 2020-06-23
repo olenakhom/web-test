@@ -11,17 +11,12 @@ import org.apache.logging.log4j.Logger;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public enum TestEnvironment {
 
-    INT("int"), QA("qa"), LOCAL("local"), STAGING("staging"), PRODUCTION("prod");
+    QA("qa"), LOCAL("local"), PRODUCTION("prod");
 
     private String env;
 
     private static final Logger LOGGER = LogManager.getLogger(TestEnvironment.class);
 
-    /**
-     * <p>returns the Environment by given system property "Env"</p>
-     *
-     * @return environment by system property, if not found Environment.LOCAL, never null
-     */
     public static TestEnvironment getBySystemProperty(TestEnvironment defaultTestEnvironment) {
         String env = System.getProperty("env");
         TestEnvironment testEnvironmentReturn = defaultTestEnvironment;

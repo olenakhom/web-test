@@ -20,7 +20,6 @@ public class AccountPage extends BasePage {
         return new CategoryPage();
     }
 
-
     @Step("Account Page : Verify page")
     public void verify(AccountPersonalInfo personalInfo) {
         assertThat(waitForVisibility(header).getText()).as("Header Title")

@@ -18,7 +18,7 @@ public class LoginPage extends BasePage{
 
     @Step("Home Page : Fill email {email} to create account")
     public void fillEmailCreate(String email) {
-        waitForClickableAndFill(emailCreateInput, email);
+        fillInput(emailCreateInput, email);
     }
 
     @Step("Home Page : Click on submit create button")
@@ -35,8 +35,8 @@ public class LoginPage extends BasePage{
 
     @Step("Home Page : Fill in login form")
     public void fillFormToLogin(String email, String password){
-        waitForClickableAndFill(emailInput, email);
-        waitForClickableAndFill(passwordInput, password);
+        fillInput(emailInput, email);
+        fillInput(passwordInput, password);
     }
 
 }

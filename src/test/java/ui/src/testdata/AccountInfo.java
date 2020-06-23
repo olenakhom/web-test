@@ -15,7 +15,7 @@ public class AccountInfo {
         personalInfo.setGender(Gender.MS);
         personalInfo.setFirstName(RandomUtil.generateString());
         personalInfo.setLastName(RandomUtil.generateString());
-        personalInfo.setPassword(RandomUtil.generateString());
+        personalInfo.setPassword("Qwerty");
         personalInfo.setDateOfBirth(new Date(2000, 1, 1));
         personalInfo.setCompany(RandomUtil.generateString());
         personalInfo.setAddress(Address.builder()
@@ -23,12 +23,13 @@ public class AccountInfo {
             .address2(RandomUtil.generateString())
             .city(RandomUtil.generateString())
             .state("Colorado")
-            .zipOrPostalCode(String.valueOf(RandomUtil.generateNumberInRange(1, 99999)))
+            .zipOrPostalCode(String.valueOf(RandomUtil.generateNumberInRange(10000, 99999)))
             .addressAlias(RandomUtil.generateString(5))
+            .country(RandomUtil.generateString())
             .build());
         personalInfo.setAdditionalInfo(RandomUtil.generateString());
-        personalInfo.setPhoneNumber(String.valueOf(RandomUtil.generateNumberInRange(1, 999999)));
-        personalInfo.setMobilePhone(String.valueOf(RandomUtil.generateNumberInRange(1, 999999)));
+        personalInfo.setPhoneNumber(String.valueOf(RandomUtil.generateNumberInRange(10000, 999999)));
+        personalInfo.setMobilePhone(String.valueOf(RandomUtil.generateNumberInRange(10000, 999999)));
         return personalInfo;
     }
 

@@ -1,10 +1,10 @@
 package api.tests;
 
+import static common.model.TestTag.REGRESSION;
+
 import api.src.junit.CustomApiTestContext;
 import api.src.model.DeleteEmployeeResponse;
-import api.src.model.EmployeesResponse;
 import api.src.steps.EmployeeStep;
-import static common.model.TestTag.REGRESSION;
 import io.qameta.allure.Issue;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Tags;

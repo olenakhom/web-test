@@ -1,8 +1,8 @@
 package api.tests;
 
-import api.src.steps.EmployeeStep;
 import static common.model.TestTag.REGRESSION;
 
+import api.src.steps.EmployeeStep;
 import api.src.junit.CustomApiTestContext;
 import api.src.model.EmployeesResponse;
 import org.junit.jupiter.api.Tag;
@@ -17,6 +17,7 @@ final class GetEmployeesTest {
     @Tags({@Tag(REGRESSION), @Tag("employee")})
     void getEmployeesHasValidSchemaAndStatusTest() {
         EmployeeStep step = new EmployeeStep();
+
         EmployeesResponse response = step.getEmployees();
 
         step.verifyStatus(response.getStatus());

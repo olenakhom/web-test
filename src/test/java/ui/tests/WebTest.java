@@ -1,6 +1,7 @@
 package ui.tests;
 
-import java.util.List;
+import static common.model.TestTag.REGRESSION;
+
 import ui.src.model.ProductDetails;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Tags;
@@ -21,11 +22,13 @@ import ui.src.pages.RegistrationPage;
 import ui.src.testdata.AccountInfo;
 import common.utils.JsonUtil;
 
+import java.util.List;
+
 @ExtendWith({CustomTestContext.class, CustomTestWatcher.class})
 public class WebTest {
 
     @Test
-    @Tags({@Tag("regression")})
+    @Tags({@Tag(REGRESSION)})
     public void signInTest() {
         AccountPersonalInfo personalInfo = AccountInfo.generateForNewAccount();
 
@@ -43,7 +46,7 @@ public class WebTest {
     }
 
     @Test
-    @Tags({@Tag("regression")})
+    @Tags({@Tag(REGRESSION)})
     public void logInTest() {
         AccountPersonalInfo personalInfo = AccountInfo.generateForExistingUser();
 
@@ -58,7 +61,7 @@ public class WebTest {
     }
 
     @Test
-    @Tags({@Tag("regression")})
+    @Tags({@Tag(REGRESSION)})
     public void checkoutTest() {
         AccountPersonalInfo personalInfo = AccountInfo.generateForExistingUser();
         List<ProductDetails> productDetails = JsonUtil.readFromProductDetailsJson("productdetails.json");
