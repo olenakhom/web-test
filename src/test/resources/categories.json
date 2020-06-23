@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Passed tests",
+    "matchedStatuses": [
+      "passed"
+    ]
+  },
+  {
+    "name": "Skipped tests",
+    "matchedStatuses": [
+      "skipped"
+    ]
+  },
+  {
+    "name": "Failed assertion tests",
+    "messageRegex": ".*Expecting.*|.*Multiple Failures.*",
+    "matchedStatuses": [
+      "failed"
+    ]
+  },
+  {
+    "name": "Element not found",
+    "traceRegex": ".*NoSuchElement.*|.*selenium.TimeoutException.*",
+    "matchedStatuses": [
+      "failed",
+      "broken"
+    ]
+  },
+  {
+    "name": "Test defect",
+    "messageRegex": ".*NullPointerException.*|.*FileNotFoundException.*|.*IllegalArgumentException.*|.*RuntimeException.*|.*IllegalStateException.*",
+    "matchedStatuses": [
+      "failed",
+      "broken"
+    ]
+  },
+  {
+    "name": "All failed and broken tests",
+    "matchedStatuses": [
+      "failed",
+      "broken"
+    ]
+  }
+]
