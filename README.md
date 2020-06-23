@@ -1,6 +1,6 @@
 # Coding challenge
 
-- [Test Automation Task](UI_API_TestAutomation.pdf "Testing Task") 
+- [Test Automation Task](resources/UI_API_TestAutomation.pdf "Testing Task") 
 - [Test Cases](TESTCASES.md "Test Cases")
 
 ### Stack of technologies
@@ -18,6 +18,7 @@
 4. [Allure commandline for generation test report](https://docs.qameta.io/allure/#_installing_a_commandline)
 5. [Maven for running tests from command line](https://maven.apache.org/install.html)
 6. [Latest Chrome browser](https://www.google.com/chrome/) need to be installed for running UI tests
+7. [Docker](https://www.docker.com/get-started) need to be installed for running UI tests in docker container (using Zalenium for example)
 
 ### Available Test Configurations via Maven:
 * -Dplatform: **local**, (**linux**, **windows**, **mac**, **selenoid** - will be available after configuring remote machines). Default value is **local**.
@@ -28,9 +29,18 @@
 * -Pui, -Papi: profiles to run UI or API test suites. Default value is **api**
 
 ### Prerequisites for Running UI Tests on Local Machine (Platform)
+#### Via Selenium Standalone Server (Chrome and Safari browsers)
 * Run script `startSeleniumGrid.sh` for Mac/Linux or `startSeleniumGrid.bat` for Windows to start Selenium Grid locally.
 For MacOs to enable running tests on Safari browser write in terminal `safaridriver --enable` and config in maven command -Dbrowser=safari -DthreadCount=1
-* Open URL `http://localhost:4444/grid/console` to check the Selenium Nodes.
+* Open URL [http://localhost:4444/grid/console](http://localhost:4444/grid/console) to check the Selenium Nodes.
+#### Via Zalenium (Chrome and Firefox browsers)
+[Zalenium Documentation](https://opensource.zalando.com/zalenium/) 
+
+* Run command `docker-compose up --force-recreate` of docker-compose.yml file
+
+After running the previous commands, you can check:
+* The grid console [http://localhost:4444/grid/console](http://localhost:4444/grid/console)
+* The dashboard which contains the video of test execution [http://localhost:4444/dashboard/](http://localhost:4444/dashboard/)
 
 ### UI Test Execution
 Run tests from command line
@@ -55,7 +65,7 @@ mvn clean -Papi test
 ### Allure test report generation
 This is already enough to see the Allure report in one command:
 ```
-allure serve /{project_root}/target/allure-results
+allure serve /{project_root_path}/target/allure-results
 ```
 If report generated successfully, report page should be opened automatically in the browser.
 
