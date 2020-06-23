@@ -61,7 +61,7 @@ public class WebTest {
     @Tags({@Tag("regression")})
     public void checkoutTest() {
         AccountPersonalInfo personalInfo = AccountInfo.generateForExistingUser();
-        List<ProductDetails> productDetails = JsonUtil.readFromProductDetailsJson();
+        List<ProductDetails> productDetails = JsonUtil.readFromProductDetailsJson("productdetails.json");
 
         HomePage homePage = new HomePage();
         homePage.openPage();

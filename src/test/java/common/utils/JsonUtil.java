@@ -1,28 +1,45 @@
 package common.utils;
 
+import api.model.Employee;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import ui.model.ProductDetails;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
-import ui.model.ProductDetails;
 
 public class JsonUtil {
 
     private JsonUtil() {}
 
-    public static List<ProductDetails> readFromProductDetailsJson() {
+    private final static String BASE_PATH_TO_TEST_DATA = "testdata" + File.separatorChar;
+
+    public static List<ProductDetails> readFromProductDetailsJson(String fileName) {
+        File file = getFileFromResource(BASE_PATH_TO_TEST_DATA + fileName);
+        return Arrays.asList(mapObject(file, ProductDetails[].class));
+    }
+
+    public static Employee readFromEmployeeJson(String fileName) {
+        File file = getFileFromResource(BASE_PATH_TO_TEST_DATA + fileName);
+        return mapObject(file, Employee.class);
+    }
+
+    public static File getFileFromResource(String pathToFile) {
+        URL fileUrl = JsonUtil.class.getClassLoader().getResource(pathToFile);
+        return new File((fileUrl).getPath());
+    }
+
+    public static <T> T mapObject(File file, Class<T> valueType) {
         ObjectMapper objectMapper = new ObjectMapper();
-        URL fileUrl = JsonUtil.class.getClassLoader().getResource("testdata/productdetails.json");
-        File file = new File((fileUrl).getPath());
-        ProductDetails[] productDetails = null;
+        T objectToMap = null;
         try {
-            productDetails = objectMapper.readValue(file, ProductDetails[].class);
+            objectToMap = objectMapper.readValue(file, valueType);
         } catch (IOException e) {
-            new RuntimeException("Mapping failed from json file " + file.getPath());
+            throw new RuntimeException("Mapping failed from file " + file.getPath());
         }
-        return Arrays.asList(productDetails);
+        return objectToMap;
     }
 
 }
