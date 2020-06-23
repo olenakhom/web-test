@@ -1,8 +1,8 @@
 package common.utils;
 
-import api.model.Employee;
+import api.src.model.Employee;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ui.model.ProductDetails;
+import ui.src.model.ProductDetails;
 
 import java.io.File;
 import java.io.IOException;

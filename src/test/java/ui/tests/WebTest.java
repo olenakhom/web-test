@@ -1,24 +1,24 @@
 package ui.tests;
 
 import java.util.List;
-import ui.model.ProductDetails;
+import ui.src.model.ProductDetails;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
-import ui.junit.extensions.custom.CustomTestContext;
-import ui.junit.extensions.custom.CustomTestWatcher;
-import ui.model.AccountPersonalInfo;
-import ui.pages.AccountPage;
-import ui.pages.CategoryPage;
-import ui.pages.HomePage;
-import ui.pages.LoginPage;
-import ui.pages.OrderConfirmationPage;
-import ui.pages.OrderPage;
-import ui.pages.ProductDetailsPage;
-import ui.pages.RegistrationPage;
-import ui.testdata.AccountInfo;
+import ui.src.junit.extensions.custom.CustomTestContext;
+import ui.src.junit.extensions.custom.CustomTestWatcher;
+import ui.src.model.AccountPersonalInfo;
+import ui.src.pages.AccountPage;
+import ui.src.pages.CategoryPage;
+import ui.src.pages.HomePage;
+import ui.src.pages.LoginPage;
+import ui.src.pages.OrderConfirmationPage;
+import ui.src.pages.OrderPage;
+import ui.src.pages.ProductDetailsPage;
+import ui.src.pages.RegistrationPage;
+import ui.src.testdata.AccountInfo;
 import common.utils.JsonUtil;
 
 @ExtendWith({CustomTestContext.class, CustomTestWatcher.class})
